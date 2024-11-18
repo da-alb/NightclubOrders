@@ -16,4 +16,15 @@ def insert_room(room_name):
         if conn:
             conn.close()
 
+def show_room():
+    try:
+        sql_query=("select * from rooms order by id")
+        cur.execute(sql_query)
+        for result in cur:
+            print(result)
+    except mariadb.Error as e:
+        print(f"Error retrieving data from database: {e}")
+        
+
 insert_room(ins_room_name)
+show_room()
